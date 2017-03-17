@@ -66,6 +66,7 @@
   <script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
   <script>
   $(document).ready(function() {
+    var refresher;
 
     function getRelayState(){
       $.ajax({
@@ -102,7 +103,7 @@
       });
     }
 
-    setTimeout(getRelayState, 500);
+    refresher = setTimeout(getRelayState, 500);
 
     $('.toggleRelay').change(function() {
       /* Act on the event */
