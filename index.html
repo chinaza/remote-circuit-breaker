@@ -66,38 +66,42 @@
   <script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
   <script>
   $(document).ready(function() {
-    $.ajax({
-      url: "/api/website/receive.php",
-      type: 'GET',
-      success: function(result){
-        if (result.charAt(5) == '0'){
-          $("#A").bootstrapToggle('off');
-        } else {
-          $("#A").bootstrapToggle('on');
-        }
+    setTimeout(getRelayState, 500);
 
-        if (result.charAt(9) == '0'){
-          $("#B").bootstrapToggle('off');
-        } else {
-          $("#B").bootstrapToggle('on');
-        }
+    function getRelayState(){
+      $.ajax({
+        url: "/api/website/receive.php",
+        type: 'GET',
+        success: function(result){
+          if (result.charAt(5) == '0'){
+            $("#A").bootstrapToggle('off');
+          } else {
+            $("#A").bootstrapToggle('on');
+          }
 
-        if (result.charAt(13) == '0'){
-          $("#C").bootstrapToggle('off');
-        } else {
-          $("#C").bootstrapToggle('on');
-        }
+          if (result.charAt(9) == '0'){
+            $("#B").bootstrapToggle('off');
+          } else {
+            $("#B").bootstrapToggle('on');
+          }
 
-        if (result.charAt(17) == '0'){
-          $("#D").bootstrapToggle('off');
-        } else {
-          $("#D").bootstrapToggle('on');
+          if (result.charAt(13) == '0'){
+            $("#C").bootstrapToggle('off');
+          } else {
+            $("#C").bootstrapToggle('on');
+          }
+
+          if (result.charAt(17) == '0'){
+            $("#D").bootstrapToggle('off');
+          } else {
+            $("#D").bootstrapToggle('on');
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown ) {
+          console.log(textStatus);
         }
-      },
-      error: function(jqXHR, textStatus, errorThrown ) {
-        console.log(textStatus);
-      }
-    });
+      });
+    }
 
     $('.toggleRelay').change(function() {
       /* Act on the event */
