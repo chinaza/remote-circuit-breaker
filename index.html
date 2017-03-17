@@ -71,27 +71,27 @@
       type: 'GET',
       success: function(result){
         if (result.charAt(5) == '0'){
-          $("#A").prop('checked', false);
+          $("#A").bootstrapToggle('off');
         } else {
-          $("#A").prop('checked', true);
+          $("#A").bootstrapToggle('on');
         }
 
         if (result.charAt(9) == '0'){
-          $("#B").prop('checked', false);
+          $("#B").bootstrapToggle('off');
         } else {
-          $("#B").prop('checked', true);
+          $("#B").bootstrapToggle('on');
         }
 
         if (result.charAt(13) == '0'){
-          $("#C").prop('checked', false);
+          $("#C").bootstrapToggle('off');
         } else {
-          $("#C").prop('checked', true);
+          $("#C").bootstrapToggle('on');
         }
 
         if (result.charAt(17) == '0'){
-          $("#D").prop('checked', false);
+          $("#D").bootstrapToggle('off');
         } else {
-          $("#D").prop('checked', true);
+          $("#D").bootstrapToggle('on');
         }
       }
     });
