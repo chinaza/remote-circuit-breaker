@@ -103,9 +103,7 @@
       });
     }
 
-    refresher = setTimeout(function(){
-      getRelayState();
-    }, 500);
+    refresher = setInterval(getRelayState, 500);
 
     $('.toggleRelay').change(function() {
       /* Act on the event */
