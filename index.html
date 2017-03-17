@@ -93,6 +93,9 @@
         } else {
           $("#D").bootstrapToggle('on');
         }
+      },
+      error: function(jqXHR, textStatus, errorThrown ) {
+        console.log(textStatus);
       }
     });
 
@@ -142,15 +145,14 @@
         data: {
           relay: relay,
           state: state
+        },
+        error: function(jqXHR, textStatus, errorThrown ) {
+          console.log(textStatus);
         }
       })
       .done(function() {
         console.log("success");
-      })
-      .error(function(jqXHR, textStatus, errorThrown ) {
-        console.log(textStatus);
       });
-
     });
   });
   </script>
