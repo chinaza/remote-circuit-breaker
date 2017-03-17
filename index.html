@@ -103,7 +103,7 @@
       /* Act on the event */
       var relay = '';
       var state = 1;
-      switch (event.target.id) {
+      switch ($(this).attr('id')) {
         case 'A':
         relay = 'A';
         if ($(this).prop('checked') == true){
