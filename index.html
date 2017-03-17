@@ -70,7 +70,7 @@
       url: "/api/website/receive.php",
       type: 'GET',
       success: function(result){
-        if (result.charAt(2) == '0'){
+        if (result.charAt(5) == '0'){
           $("#A").attr({
             checked: false
           });
@@ -80,7 +80,7 @@
           });
         }
 
-        if (result.charAt(6) == '0'){
+        if (result.charAt(9) == '0'){
           $("#B").attr({
             checked: false
           });
@@ -90,7 +90,7 @@
           });
         }
 
-        if (result.charAt(10) == '0'){
+        if (result.charAt(13) == '0'){
           $("#C").attr({
             checked: false
           });
@@ -100,7 +100,7 @@
           });
         }
 
-        if (result.charAt(14) == '0'){
+        if (result.charAt(17) == '0'){
           $("#D").attr({
             checked: false
           });
