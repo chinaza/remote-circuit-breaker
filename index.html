@@ -71,43 +71,27 @@
       type: 'GET',
       success: function(result){
         if (result.charAt(5) == '0'){
-          $("#A").attr({
-            checked: false
-          });
+          $("#A").prop('checked', false);
         } else {
-          $("#A").attr({
-            checked: true
-          });
+          $("#A").prop('checked', true);
         }
 
         if (result.charAt(9) == '0'){
-          $("#B").attr({
-            checked: false
-          });
+          $("#B").prop('checked', false);
         } else {
-          $("#B").attr({
-            checked: true
-          });
+          $("#B").prop('checked', true);
         }
 
         if (result.charAt(13) == '0'){
-          $("#C").attr({
-            checked: false
-          });
+          $("#C").prop('checked', false);
         } else {
-          $("#C").attr({
-            checked: true
-          });
+          $("#C").prop('checked', true);
         }
 
         if (result.charAt(17) == '0'){
-          $("#D").attr({
-            checked: false
-          });
+          $("#D").prop('checked', false);
         } else {
-          $("#D").attr({
-            checked: true
-          });
+          $("#D").prop('checked', true);
         }
       }
     });
@@ -119,7 +103,7 @@
       switch (event.target.id) {
         case 'A':
         relay = 'A';
-        if ($('#A').attr('checked') == true){
+        if ($('#A').prop('checked') == true){
           state = 1;
         } else {
           state = 0;
@@ -127,7 +111,7 @@
         break;
         case 'B':
         relay = 'B';
-        if ($('#B').attr('checked') == true){
+        if ($('#B').prop('checked') == true){
           state = 1;
         } else {
           state = 0;
@@ -135,7 +119,7 @@
         break;
         case 'C':
         relay = 'C';
-        if ($('#C').attr('checked') == true){
+        if ($('#C').prop('checked') == true){
           state = 1;
         } else {
           state = 0;
@@ -143,7 +127,7 @@
         break;
         case 'D':
         relay = 'D';
-        if ($('#D').attr('checked') == true){
+        if ($('#D').prop('checked') == true){
           state = 1;
         } else {
           state = 0;
