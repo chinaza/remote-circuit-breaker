@@ -1,0 +1,21 @@
+{
+  "name": "esther",
+  "homepage": "https://github.com/chinaza/remote-circuit-breaker",
+  "authors": [
+    "Chinaza Egbo <chinaza@zhaptek.com>"
+  ],
+  "description": "Circuit breaker remote server",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-toggle": "^2.2.2"
+  }
+}

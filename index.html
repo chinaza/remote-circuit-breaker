@@ -1,1 +1,177 @@
-help me
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tosin's Project</title>
+
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+  <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#fff">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img src="./assets/img/CU.png" class="navbar-brand img-brand img-responsive" />
+          <a class="navbar-brand" style="color:rgba(0,0,0,0.85)" href="#">Remote Circuit Breaker</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <div class="inner-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Relay</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Relay 1</td>
+            <td><input checked data-toggle="toggle" type="checkbox" id="A"></td>
+          </tr>
+          <tr>
+            <td>Relay 2</td>
+            <td><input checked data-toggle="toggle" type="checkbox" id="B"></td>
+          </tr>
+          <tr>
+            <td>Relay 3</td>
+            <td><input checked data-toggle="toggle" type="checkbox" id="C"></td>
+          </tr>
+          <tr>
+            <td>Relay 4</td>
+            <td><input checked data-toggle="toggle" type="checkbox" id="D"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $.ajax({
+      url: "/api/website/receive.php",
+      type: 'GET',
+      success: function(result){
+        if (result.charAt(2) == '0'){
+          $("#A").attr({
+            checked: false
+          });
+        } else {
+          $("#A").attr({
+            checked: true
+          });
+        }
+
+        if (result.charAt(6) == '0'){
+          $("#B").attr({
+            checked: false
+          });
+        } else {
+          $("#B").attr({
+            checked: true
+          });
+        }
+
+        if (result.charAt(10) == '0'){
+          $("#C").attr({
+            checked: false
+          });
+        } else {
+          $("#C").attr({
+            checked: true
+          });
+        }
+
+        if (result.charAt(14) == '0'){
+          $("#D").attr({
+            checked: false
+          });
+        } else {
+          $("#D").attr({
+            checked: true
+          });
+        }
+      }
+    });
+
+    $('.toggleRelay').click(function(event) {
+      /* Act on the event */
+      var relay = '';
+      var state = 1;
+      switch (event.target.id) {
+        case 'A':
+        relay = 'A';
+        if ($('#A').attr('checked') == true){
+          state = 1;
+        } else {
+          state = 0;
+        }
+        break;
+        case 'B':
+        relay = 'B';
+        if ($('#B').attr('checked') == true){
+          state = 1;
+        } else {
+          state = 0;
+        }
+        break;
+        case 'C':
+        relay = 'C';
+        if ($('#C').attr('checked') == true){
+          state = 1;
+        } else {
+          state = 0;
+        }
+        break;
+        case 'D':
+        relay = 'D';
+        if ($('#D').attr('checked') == true){
+          state = 1;
+        } else {
+          state = 0;
+        }
+        break;
+        default:
+      }
+
+      $.ajax({
+        url: '/api/website/send.php',
+        type: 'POST',
+        data: {
+          relay: relay,
+          state: state
+        }
+      })
+      .done(function() {
+        console.log("success");
+      })
+      .error(function(jqXHR, textStatus, errorThrown ) {
+        console.log(textStatus);
+      });
+
+    });
+
+  });
+  </script>
+
+</body>
+
+</html>
