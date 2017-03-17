@@ -96,14 +96,16 @@
       }
     });
 
-    $('.toggleRelay').click(function(event) {
+    $('.toggleRelay').change(function() {
+      $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+
       /* Act on the event */
       var relay = '';
       var state = 1;
       switch (event.target.id) {
         case 'A':
         relay = 'A';
-        if ($('#A').prop('checked') == true){
+        if ($(this).prop('checked') == true){
           state = 1;
         } else {
           state = 0;
@@ -111,7 +113,7 @@
         break;
         case 'B':
         relay = 'B';
-        if ($('#B').prop('checked') == true){
+        if ($(this).prop('checked') == true){
           state = 1;
         } else {
           state = 0;
@@ -119,7 +121,7 @@
         break;
         case 'C':
         relay = 'C';
-        if ($('#C').prop('checked') == true){
+        if ($(this).prop('checked') == true){
           state = 1;
         } else {
           state = 0;
@@ -127,7 +129,7 @@
         break;
         case 'D':
         relay = 'D';
-        if ($('#D').prop('checked') == true){
+        if ($(this).prop('checked') == true){
           state = 1;
         } else {
           state = 0;
@@ -150,6 +152,10 @@
       .error(function(jqXHR, textStatus, errorThrown ) {
         console.log(textStatus);
       });
+
+    })
+
+    $('.toggleRelay').click(function(event) {
 
     });
 
