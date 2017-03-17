@@ -42,19 +42,19 @@
         <tbody>
           <tr>
             <td>Relay 1</td>
-            <td><input checked data-toggle="toggle" type="checkbox" id="A"></td>
+            <td><input checked data-toggle="toggle" type="checkbox" class="toggleRelay" id="A"></td>
           </tr>
           <tr>
             <td>Relay 2</td>
-            <td><input checked data-toggle="toggle" type="checkbox" id="B"></td>
+            <td><input checked data-toggle="toggle" type="checkbox" class="toggleRelay" id="B"></td>
           </tr>
           <tr>
             <td>Relay 3</td>
-            <td><input checked data-toggle="toggle" type="checkbox" id="C"></td>
+            <td><input checked data-toggle="toggle" type="checkbox" class="toggleRelay" id="C"></td>
           </tr>
           <tr>
             <td>Relay 4</td>
-            <td><input checked data-toggle="toggle" type="checkbox" id="D"></td>
+            <td><input checked data-toggle="toggle" type="checkbox" class="toggleRelay" id="D"></td>
           </tr>
         </tbody>
       </table>
@@ -97,8 +97,6 @@
     });
 
     $('.toggleRelay').change(function() {
-      $('#console-event').html('Toggle: ' + $(this).prop('checked'))
-
       /* Act on the event */
       var relay = '';
       var state = 1;
@@ -153,12 +151,7 @@
         console.log(textStatus);
       });
 
-    })
-
-    $('.toggleRelay').click(function(event) {
-
     });
-
   });
   </script>
 
